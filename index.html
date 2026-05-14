@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DocePedido</title>
+    
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+
+    <!-- ==============================================
+         TELA: LOGIN (ENTRADA)
+         ============================================== -->
+    <section id="login-screen" class="screen active login-bg">
+        <div class="login-header text-center">
+            <div class="login-logo">
+                <i class="ph-fill ph-cake"></i>
+            </div>
+            <h1>DocePedido</h1>
+            <p>Conectando confeiteiras aos amantes de doces</p>
+        </div>
+
+        <div class="login-cards-container">
+            <!-- Card Confeiteira -->
+            <div class="login-role-card" onclick="loginAsBaker()">
+                <div class="role-icon"><i class="ph ph-apron"></i></div>
+                <div class="role-info">
+                    <h3>Confeiteiro(a)</h3>
+                    <p>Gerencie pedidos, clientes, vendas e seu negócio.</p>
+                </div>
+                <i class="ph ph-arrow-right role-arrow"></i>
+            </div>
+
+            <!-- Card Cliente -->
+            <div class="login-role-card" onclick="loginAsClient()">
+                <div class="role-icon"><i class="ph ph-user"></i></div>
+                <div class="role-info">
+                    <h3>Cliente</h3>
+                    <p>Peça seus doces favoritos e acompanhe seu pedido.</p>
+                </div>
+                <i class="ph ph-arrow-right role-arrow"></i>
+            </div>
+        </div>
+
+        <div class="login-actions">
+            <button class="btn-primary full-width mb-3 hover-scale">Fazer login</button>
+            <button class="btn-outline full-width hover-scale">Criar conta</button>
+            <div class="divider-text">ou continue com</div>
+            <button class="btn-google full-width hover-scale">
+                <i class="ph-fill ph-google-logo"></i> Google
+            </button>
+        </div>
+    </section>
+
+    <!-- ==============================================
+         TELA: DASHBOARD CONFEITEIRA (RESUMO)
+         ============================================== -->
+    <section id="baker-dashboard" class="screen">
+        <header class="home-header">
+            <div class="user-greeting">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Avatar" class="avatar">
+                <div>
+                    <p class="greeting-text">Olá, <span>Confeiteira!</span> 👩‍🍳</p>
+                    <p class="greeting-sub">Aqui está o resumo do seu negócio</p>
+                </div>
+            </div>
+            <button class="icon-btn-ghost hover-scale" aria-label="Notificações">
+                <i class="ph ph-bell"></i>
+            </button>
+        </header>
+
+        <div class="dashboard-stats-grid mb-4">
+            <div class="stat-box">
+                <p>Vendas (Maio)</p>
+                <h3>R$ 4.850,00</h3>
+                <span class="text-green"><i class="ph ph-trend-up"></i> +12%</span>
+            </div>
+            <div class="stat-box">
+                <p>Pedidos</p>
+                <h3>128</h3>
+                <span class="text-green"><i class="ph ph-trend-up"></i> +8%</span>
+            </div>
+            <div class="stat-box full-span glow-box">
+                <p>Lucro Líquido</p>
+                <h3 class="text-primary">R$ 2.450,00</h3>
+                <span class="text-green"><i class="ph ph-trend-up"></i> +15%</span>
+            </div>
+        </div>
+
+        <div class="section-title">
+            <h3>Pedidos Recentes</h3>
+            <a href="#" class="see-all">Ver todos</a>
+        </div>
+        
+        <div class="orders-list">
+            <div class="order-card-timeline hover-scale">
+                <div class="order-header-timeline">
+                    <span class="order-id">#1235</span>
+                    <span class="status-text text-primary">Novo</span>
+                </div>
+                <h4>Torta de Limão</h4>
+                <p class="order-desc">Cliente: João M. • Para: Hoje às 18h</p>
+                <p class="order-total">Total: R$ 80,00</p>
+            </div>
+            <div class="order-card-timeline hover-scale">
+                <div class="order-header-timeline">
+                    <span class="order-id">#1234</span>
+                    <span class="status-text text-warning">Em preparo</span>
+                </div>
+                <h4>Bolo Chocolate Belga</h4>
+                <p class="order-desc">Cliente: Ana S. • Para: Amanhã às 14h</p>
+                <p class="order-total">Total: R$ 120,00</p>
+            </div>
+        </div>
+        <div class="bottom-spacer"></div>
+    </section>
+
+    <!-- ==============================================
+         TELA: INÍCIO (CLIENTE)
+         ============================================== -->
+    <section id="inicio" class="screen">
+        <header class="home-header">
+            <div class="user-greeting">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Avatar" class="avatar">
+                <div>
+                    <p class="greeting-text">Bom dia, <span>Cliente!</span> 👋</p>
+                    <p class="greeting-sub">Que delícia será hoje?</p>
+                </div>
+            </div>
+            <button class="icon-btn-ghost hover-scale" aria-label="Notificações">
+                <i class="ph ph-bell"></i>
+                <span class="badge">2</span>
+            </button>
+        </header>
+
+        <div class="search-container">
+            <i class="ph ph-magnifying-glass search-icon-left"></i>
+            <input type="text" placeholder="Buscar doces, bolos, kits...">
+            <button class="search-btn-primary hover-scale">
+                <i class="ph ph-magnifying-glass"></i>
+            </button>
+        </div>
+
+        <div class="promo-banner">
+            <div class="banner-content">
+                <h3>Dia das Mães<br>com amor</h3>
+                <p>Catálogo especial<br>com preços exclusivos</p>
+                <button class="btn-sm hover-scale" onclick="switchTab('catalogo', 'client')">Ver catálogo</button>
+            </div>
+            <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Bolo promocional" class="banner-img">
+        </div>
+
+        <div class="section-title">
+            <h3>Categorias</h3>
+            <a href="#" class="see-all">Ver todas</a>
+        </div>
+        <div class="categories-scroll">
+            <div class="category-item active hover-scale">
+                <div class="cat-icon"><i class="ph ph-cake"></i></div>
+                <span>Bolos</span>
+            </div>
+            <div class="category-item hover-scale">
+                <div class="cat-icon"><i class="ph ph-cookie"></i></div>
+                <span>Chocolates</span>
+            </div>
+            <div class="category-item hover-scale">
+                <div class="cat-icon"><i class="ph ph-pizza"></i></div>
+                <span>Tortas</span>
+            </div>
+            <div class="category-item hover-scale">
+                <div class="cat-icon"><i class="ph ph-gift"></i></div>
+                <span>Kits Festa</span>
+            </div>
+            <div class="category-item hover-scale">
+                <div class="cat-icon"><i class="ph ph-ice-cream"></i></div>
+                <span>Sobremesas</span>
+            </div>
+            <div class="category-item hover-scale">
+                <div class="cat-icon"><i class="ph ph-circle-dashed"></i></div>
+                <span>Donuts</span>
+            </div>
+            <div class="category-item hover-scale">
+                <div class="cat-icon"><i class="ph ph-hamburger"></i></div>
+                <span>Macarons</span>
+            </div>
+        </div>
+
+        <div class="section-title">
+            <h3>Em destaque</h3>
+            <a href="#" class="see-all">Ver todos</a>
+        </div>
+        <div class="products-h-scroll">
+            <!-- Produto 1 -->
+            <div class="product-card hover-scale-card">
+                <div class="product-img" onclick="openProduct()">
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Bolo Red Velvet">
+                    <button class="fav-btn" onclick="toggleFav(event, this)"><i class="ph ph-heart"></i></button>
+                </div>
+                <div class="product-info">
+                    <h4>Bolo Red Velvet</h4>
+                    <div class="product-rating">
+                        <i class="ph-fill ph-star"></i> 4.9
+                    </div>
+                    <div class="product-price-row">
+                        <span class="price">R$ 120,00</span>
+                        <button class="add-btn hover-scale" onclick="addToCart(event)"><i class="ph ph-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+            <!-- Produto 2 -->
+            <div class="product-card hover-scale-card">
+                <div class="product-img" onclick="openProduct()">
+                    <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Brigadeiros">
+                    <button class="fav-btn" onclick="toggleFav(event, this)"><i class="ph ph-heart"></i></button>
+                </div>
+                <div class="product-info">
+                    <h4>Brigadeiros Gourmet</h4>
+                    <div class="product-rating">
+                        <i class="ph-fill ph-star"></i> 4.8
+                    </div>
+                    <div class="product-price-row">
+                        <span class="price">R$ 45,00</span>
+                        <button class="add-btn hover-scale" onclick="addToCart(event)"><i class="ph ph-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+            <!-- Produto 3 -->
+            <div class="product-card hover-scale-card">
+                <div class="product-img" onclick="openProduct()">
+                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Donuts">
+                    <button class="fav-btn" onclick="toggleFav(event, this)"><i class="ph ph-heart"></i></button>
+                </div>
+                <div class="product-info">
+                    <h4>Caixa de Donuts</h4>
+                    <div class="product-rating">
+                        <i class="ph-fill ph-star"></i> 4.7
+                    </div>
+                    <div class="product-price-row">
+                        <span class="price">R$ 35,00</span>
+                        <button class="add-btn hover-scale" onclick="addToCart(event)"><i class="ph ph-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-spacer"></div>
+    </section>
+
+    <!-- ==============================================
+         TELA: CATÁLOGO
+         ============================================== -->
+    <section id="catalogo" class="screen">
+        <header class="page-header center-header">
+            <button class="back-btn ghost hover-scale" onclick="switchTab('inicio', 'client')"><i class="ph ph-caret-left"></i></button>
+            <h2>Catálogo</h2>
+            <div style="width: 24px;"></div>
+        </header>
+
+        <div class="search-container small-search">
+            <i class="ph ph-magnifying-glass search-icon-left"></i>
+            <input type="text" placeholder="Buscar produtos...">
+            <button class="filter-btn hover-scale"><i class="ph ph-funnel"></i></button>
+        </div>
+
+        <div class="pill-tabs mb-4" id="catalog-pills">
+            <button class="pill active hover-scale" data-category="Todos">Todos</button>
+            <button class="pill hover-scale" data-category="Bolos">Bolos</button>
+            <button class="pill hover-scale" data-category="Chocolates">Chocolates</button>
+            <button class="pill hover-scale" data-category="Donuts">Donuts</button>
+            <button class="pill hover-scale" data-category="Cookies">Cookies</button>
+            <button class="pill hover-scale" data-category="Tortas">Tortas</button>
+            <button class="pill hover-scale" data-category="Macarons">Macarons</button>
+            <button class="pill hover-scale" data-category="Sobremesas">Sobremesas</button>
+            <button class="pill hover-scale" data-category="Kits Festa">Kits</button>
+        </div>
+
+        <div class="catalog-grid" id="client-catalog-grid">
+            <!-- Produtos renderizados via JavaScript -->
+        </div>
+        <div class="bottom-spacer"></div>
+    </section>
+
+    <!-- ==============================================
+         TELA: PRODUTOS (CONFEITEIRA)
+         ============================================== -->
+    <section id="produtos-confeiteira" class="screen">
+        <header class="page-header center-header">
+            <button class="back-btn ghost hover-scale" onclick="switchTab('baker-dashboard', 'baker')"><i class="ph ph-caret-left"></i></button>
+            <h2>Meus Produtos</h2>
+            <button class="icon-btn-ghost hover-scale"><i class="ph ph-plus"></i></button>
+        </header>
+
+        <div class="search-container small-search">
+            <i class="ph ph-magnifying-glass search-icon-left"></i>
+            <input type="text" placeholder="Buscar produtos...">
+            <button class="filter-btn hover-scale"><i class="ph ph-funnel"></i></button>
+        </div>
+
+        <div class="pill-tabs mb-4" id="baker-catalog-pills">
+            <button class="pill active hover-scale" data-category="Todos">Todos</button>
+            <button class="pill hover-scale" data-category="Bolos">Bolos</button>
+            <button class="pill hover-scale" data-category="Chocolates">Chocolates</button>
+            <button class="pill hover-scale" data-category="Donuts">Donuts</button>
+            <button class="pill hover-scale" data-category="Cookies">Cookies</button>
+            <button class="pill hover-scale" data-category="Tortas">Tortas</button>
+            <button class="pill hover-scale" data-category="Macarons">Macarons</button>
+            <button class="pill hover-scale" data-category="Sobremesas">Sobremesas</button>
+            <button class="pill hover-scale" data-category="Kits Festa">Kits</button>
+        </div>
+
+        <div class="catalog-grid" id="baker-catalog-grid">
+            <!-- Produtos renderizados via JavaScript -->
+        </div>
+        <div class="bottom-spacer"></div>
+    </section>
+
+    <!-- ==============================================
+         TELA: PRODUTO (Detalhes)
+         ============================================== -->
+    <section id="produto" class="screen details-screen">
+        <header class="transparent-header">
+            <button class="circle-btn hover-scale" onclick="closeProduct()"><i class="ph ph-caret-left"></i></button>
+            <span>Detalhes do produto</span>
+            <button class="circle-btn hover-scale"><i class="ph ph-heart"></i></button>
+        </header>
+
+        <div class="product-header-img">
+            <img id="detail-img" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Produto">
+            <div class="img-pagination">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+        
+        <div class="product-body">
+            <div class="product-title-row">
+                <h2 id="detail-title">Bolo Chocolate Belga</h2>
+                <span class="price-large" id="detail-price">R$ 110,00</span>
+            </div>
+            <div class="rating mb-3">
+                <i class="ph-fill ph-star"></i> <span id="detail-rating">4.9</span> <span class="text-muted">(128 avaliações)</span>
+            </div>
+
+            <p class="product-description mb-4" id="detail-description">
+                Delicioso bolo artesanal feito com os melhores ingredientes.
+            </p>
+            
+            <div class="options-section">
+                <h3>Tamanho</h3>
+                <div class="size-options">
+                    <label class="size-radio hover-scale-card">
+                        <input type="radio" name="size">
+                        <span class="size-box">15cm<br><small>R$ 80,00</small></span>
+                    </label>
+                    <label class="size-radio hover-scale-card">
+                        <input type="radio" name="size" checked>
+                        <span class="size-box">20cm<br><small>R$ 110,00</small></span>
+                    </label>
+                    <label class="size-radio hover-scale-card">
+                        <input type="radio" name="size">
+                        <span class="size-box">25cm<br><small>R$ 150,00</small></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="options-section">
+                <h3>Recheio</h3>
+                <div class="custom-select hover-scale-card">
+                    <select>
+                        <option>Brigadeiro</option>
+                        <option>Doce de Leite</option>
+                        <option>Ninho com Nutella</option>
+                    </select>
+                    <i class="ph ph-caret-down"></i>
+                </div>
+            </div>
+
+            <div class="options-section">
+                <h3>Observações</h3>
+                <textarea placeholder="Ex: Sem glúten, menos doce..."></textarea>
+            </div>
+
+            <div class="bottom-spacer"></div>
+        </div>
+
+        <div class="fixed-bottom-action">
+            <button class="btn-primary full-width hover-scale glow-btn" onclick="addToCartAnimation()">
+                <i class="ph ph-shopping-cart"></i> Adicionar ao carrinho
+            </button>
+        </div>
+    </section>
+
+    <!-- ==============================================
+         TELA: PEDIDOS (CLIENTE OU CONFEITEIRA)
+         ============================================== -->
+    <section id="pedidos" class="screen">
+        <header class="page-header center-header">
+            <div style="width: 24px;"></div>
+            <h2>Meus pedidos</h2>
+            <button class="icon-btn-ghost hover-scale"><i class="ph ph-magnifying-glass"></i></button>
+        </header>
+
+        <div class="pill-tabs mb-4">
+            <button class="pill hover-scale">Todos</button>
+            <button class="pill active hover-scale">Em preparo</button>
+            <button class="pill hover-scale">Enviados</button>
+            <button class="pill hover-scale">Concluído</button>
+        </div>
+
+        <div class="orders-list">
+            <!-- Pedido 1 (Em preparo) -->
+            <div class="order-card-timeline hover-scale-card">
+                <div class="order-header-timeline">
+                    <span class="order-id">#1234</span>
+                    <span class="status-text text-primary">Em preparo</span>
+                </div>
+                <h4>Bolo Chocolate Belga</h4>
+                <p class="order-desc">20cm • Entrega: 14/05 às 14h</p>
+                <p class="order-total">Total: R$ 120,00</p>
+                
+                <div class="timeline">
+                    <div class="tl-step active glow-dot"><div class="tl-dot"></div></div>
+                    <div class="tl-line active-line"></div>
+                    <div class="tl-step"><div class="tl-dot"></div></div>
+                    <div class="tl-line"></div>
+                    <div class="tl-step"><div class="tl-dot"></div></div>
+                </div>
+            </div>
+
+            <!-- Pedido 2 -->
+            <div class="order-card-timeline hover-scale-card">
+                <div class="order-header-timeline">
+                    <span class="order-id">#1233</span>
+                    <span class="status-text text-primary">Saiu para entrega</span>
+                </div>
+                <h4>Brigadeiros Gourmet</h4>
+                <p class="order-desc">Entrega: 13/05 às 16h</p>
+                <p class="order-total">Total: R$ 45,00</p>
+            </div>
+        </div>
+        <div class="bottom-spacer"></div>
+    </section>
+
+    <!-- ==============================================
+         TELA: PERFIL
+         ============================================== -->
+    <section id="perfil" class="screen">
+        <header class="page-header center-header">
+            <button class="icon-btn-ghost hover-scale" onclick="logout()"><i class="ph ph-sign-out"></i></button>
+            <h2>Meu perfil</h2>
+            <button class="icon-btn-ghost hover-scale"><i class="ph ph-gear"></i></button>
+        </header>
+
+        <div class="profile-user-card hover-scale-card">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Avatar" class="profile-avatar-lg">
+            <div class="profile-user-info">
+                <h3>Usuário</h3>
+                <p id="profile-role-text">Cliente</p>
+                <div class="user-rating"><i class="ph-fill ph-star"></i> 5.0</div>
+            </div>
+        </div>
+
+        <div class="profile-menu">
+            <a href="#" class="menu-item hover-scale-card">
+                <div class="menu-icon"><i class="ph ph-map-pin"></i></div>
+                <div class="menu-text">Meus endereços</div>
+                <i class="ph ph-caret-right"></i>
+            </a>
+            <a href="#" class="menu-item hover-scale-card">
+                <div class="menu-icon"><i class="ph ph-credit-card"></i></div>
+                <div class="menu-text">Formas de pagamento</div>
+                <i class="ph ph-caret-right"></i>
+            </a>
+            
+            <div class="theme-selector-section mt-4">
+                <h4>Tema do aplicativo</h4>
+                <div class="theme-options">
+                    <button class="theme-btn hover-scale" id="btn-theme-light" onclick="setTheme('light')">
+                        <i class="ph ph-sun"></i>
+                        <span>Claro</span>
+                    </button>
+                    <button class="theme-btn hover-scale" id="btn-theme-dark" onclick="setTheme('dark')">
+                        <i class="ph ph-moon"></i>
+                        <span>Escuro</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-spacer"></div>
+    </section>
+
+    <!-- ==============================================
+         BOTTOM NAVIGATION - CLIENTE
+         ============================================== -->
+    <nav class="bottom-nav" id="nav-client" style="display:none;">
+        <button class="nav-item active hover-scale" data-target="inicio">
+            <i class="ph ph-house"></i>
+            <span>Início</span>
+        </button>
+        <button class="nav-item hover-scale" data-target="catalogo">
+            <i class="ph ph-book-open"></i>
+            <span>Catálogo</span>
+        </button>
+        <button class="nav-item hover-scale" data-target="pedidos">
+            <div class="icon-wrapper">
+                <i class="ph ph-receipt"></i>
+                <span class="nav-badge" id="cart-badge" style="display:none;">1</span>
+            </div>
+            <span>Pedidos</span>
+        </button>
+        <button class="nav-item hover-scale" data-target="perfil">
+            <i class="ph ph-user"></i>
+            <span>Perfil</span>
+        </button>
+    </nav>
+
+    <!-- ==============================================
+         BOTTOM NAVIGATION - CONFEITEIRA
+         ============================================== -->
+    <nav class="bottom-nav" id="nav-baker" style="display:none;">
+        <button class="nav-item active hover-scale" data-target="baker-dashboard">
+            <i class="ph ph-chart-line-up"></i>
+            <span>Resumo</span>
+        </button>
+        <button class="nav-item hover-scale" data-target="pedidos">
+            <i class="ph ph-receipt"></i>
+            <span>Pedidos</span>
+        </button>
+        <button class="nav-item hover-scale" data-target="produtos-confeiteira">
+            <i class="ph ph-book-open"></i>
+            <span>Produtos</span>
+        </button>
+        <button class="nav-item hover-scale" data-target="perfil">
+            <i class="ph ph-user"></i>
+            <span>Perfil</span>
+        </button>
+    </nav>
+
+</div>
+
+<!-- TOAST ANIMATION -->
+<div id="toast" class="toast-message glow-btn">Item adicionado!</div>
+
+<script src="script.js"></script>
+</body>
+</html>
